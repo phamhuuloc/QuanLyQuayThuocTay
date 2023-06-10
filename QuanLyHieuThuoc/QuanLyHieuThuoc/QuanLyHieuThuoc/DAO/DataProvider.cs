@@ -1,0 +1,130 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace QuanLyHieuThuoc
+{
+    public class DataProvider
+    {
+        private static DataProvider instance; // Ctrl + R + E --> Packetizing
+
+        public static DataProvider Instance
+        {
+            get { if (instance == null) instance = new DataProvider(); return DataProvider.instance; }
+            private set { DataProvider.instance = value; }
+        }
+
+        private DataProvider() { }
+
+        private string connectionSTR = "Server=DESKTOP-2RL3R3I;Database=QuayThuocTay;User id=sa;pwd=loc281202";
+
+
+        //Truy vấn trực tiếp dữ liệu bình thường
+        public DataTable ExecuteQuery(string query, object[] parameter = null)
+        {
+            DataTable data = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(connectionSTR))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                if (parameter != null)
+                {
+                    string[] listPara = query.Split(' ');
+                    int i = 0;
+                    foreach (string item in listPara)
+                    {
+                        Console.WriteLine(item);
+                        if (item.Contains('@'))
+                        {
+                            command.Parameters.AddWithValue(item, parameter[i]);
+                            i++;
+                        }
+                    }
+                }
+            
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+                        adapter.Fill(data);
+
+                connection.Close();
+            }
+
+            return data;
+        }
+
+        //Trả về số lượng hàng tìm thấy, dùng để đếm số đối tượng thỏa mãn câu truy vấn
+        public int ExecuteNonQuery(string query, object[] parameter = null)
+        {
+            int data = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionSTR))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                if (parameter != null)
+                {
+                    string[] listPara = query.Split(' ');
+                    int i = 0;
+                    foreach (string item in listPara)
+                    {
+                        if (item.Contains('@'))
+                        {
+                            command.Parameters.AddWithValue(item, parameter[i]);
+                            i++;
+                        }
+                    }
+                }
+
+                data = command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+
+            return data;
+        }
+
+
+        //Trả về giá trị của hàng thứ nhất, cột thứ nhất, sử dụng nhiều trong truy vấn thống kê
+        public object ExecuteScalar(string query, object[] parameter = null)
+        {
+            object data = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionSTR))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                if (parameter != null)
+                {
+                    string[] listPara = query.Split(' ');
+                    int i = 0;
+                    foreach (string item in listPara)
+                    {
+                        if (item.Contains('@'))
+                        {
+                            command.Parameters.AddWithValue(item, parameter[i]);
+                            i++;
+                        }
+                    }
+                }
+
+                data = command.ExecuteScalar();
+
+                connection.Close();
+            }
+
+            return data;
+        }
+    }
+}

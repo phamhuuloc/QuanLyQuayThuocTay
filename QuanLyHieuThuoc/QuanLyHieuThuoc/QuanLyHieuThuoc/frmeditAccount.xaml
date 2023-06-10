@@ -1,0 +1,52 @@
+﻿<Window x:Class="QuanLyHieuThuoc.editAccount"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyHieuThuoc"
+        mc:Ignorable="d"
+        Title="Sửa thông tin tài khoản" Height="400" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}" Loaded="EditAcountLoad">
+    <Grid>
+        <StackPanel>
+            <Label FontWeight="Bold">Tên hiển thị: </Label>
+            <TextBox x:Name="txtEditTenHienThi"
+  materialDesign:HintAssist.Hint="Nhập tên hiển thị"
+  Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            <Label FontWeight="Bold">Số điện thoại:</Label>
+            <TextBox x:Name="txtEditSoDienThoai"
+  materialDesign:HintAssist.Hint="Nhập số điện thoại"
+  Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextChanged="TextBox_TextChanged_SDT" />
+            <Label FontWeight="Bold">Chi nhánh:</Label>
+            <ComboBox x:Name="cbChiNhanh" SelectedIndex="0">
+            </ComboBox>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Button
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    Width="100" Click="XacNhanSuaTaiKhoan">
+                       Xác nhận
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    Width="100" Click="cHuy">
+                        Hủy
+                    </Button>
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

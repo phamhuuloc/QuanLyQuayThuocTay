@@ -1,0 +1,53 @@
+﻿<Window x:Class="QuanLyHieuThuoc.frmDoiMatKhau"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyHieuThuoc"
+        mc:Ignorable="d"
+        Title="Đổi mật khẩu"  Height="400" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
+        <StackPanel>
+            <Label FontWeight="Bold">Mật khẩu hiện tại:</Label>
+            <PasswordBox
+  x:Name="MatKhauCu"
+  materialDesign:HintAssist.Hint="Nhập mật khẩu hiện tại" />
+            <Label FontWeight="Bold">Mật khẩu mới:</Label>
+            <PasswordBox
+  x:Name="MatKhauMoi"
+  materialDesign:HintAssist.Hint="Nhập mật khẩu mới" />
+            <Label FontWeight="Bold">Nhập lại mật khẩu mới:</Label>
+            <PasswordBox
+  x:Name="NhapLaiMatKhauMoi"
+  materialDesign:HintAssist.Hint="Nhập lại mật khẩu mới" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Button x:Name="XacNhanDoiMatKhau"
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    Width="100" Click="XacNhanDoiMatKhau_Click">
+                        Xác nhận
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="HuyDoiMatKhau"
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    Width="100" Click="HuyDoiMatKhau_Click">
+                        Hủy
+                    </Button>
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

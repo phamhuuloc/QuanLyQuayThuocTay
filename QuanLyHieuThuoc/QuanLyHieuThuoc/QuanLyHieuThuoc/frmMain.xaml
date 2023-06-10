@@ -1,0 +1,782 @@
+﻿<Window x:Class="QuanLyHieuThuoc.frmMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyHieuThuoc"
+        mc:Ignorable="d"
+        Title="Quản lý cửa hàng bán thuốc" Height="610" Width="1200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Grid Background="Beige">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <StackPanel>
+                <!--Button Trang chủ -->
+                <Button IsEnabled="True" x:Name="btnTrangChu" ToolTip="TRANG CHỦ" Style="{StaticResource MaterialDesignRaisedDarkButton}"  Margin="5,0,0,5" HorizontalAlignment="Left" Height="60" Width="160" Click="BtnTrangChu_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Home" Width="30" Height="30" HorizontalAlignment="Left"/>
+                        <Label Content="TRANG CHỦ" FontFamily="Segoe UI" FontSize="15" HorizontalAlignment="Center" Foreground="White" Margin="0,0,0,0" FontWeight="Bold" VerticalAlignment="Center"></Label>
+                    </StackPanel>
+                </Button>
+                <!--Button nhập kho -->
+                <Button IsEnabled="True" x:Name="btnNhapKho" ToolTip="NHẬP KHO" Style="{StaticResource MaterialDesignRaisedDarkButton}"  Margin="5,0,0,5" HorizontalAlignment="Left" Height="60" Width="160" Click="BtnNhapKho_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="DebugStepInto" Width="30" Height="30" HorizontalAlignment="Left"/>
+                        <Label Content="NHẬP KHO" FontFamily="Segoe UI" FontSize="15" HorizontalAlignment="Center" Foreground="White" Margin="0,0,0,0" FontWeight="Bold" VerticalAlignment="Center"></Label>
+                    </StackPanel>
+                </Button>
+                <!-- Button Bán hàng-->
+                <Button IsEnabled="True" x:Name="btnBanHang" ToolTip="BÁN HÀNG" Style="{StaticResource MaterialDesignRaisedDarkButton}"  Margin="5,0,0,5" HorizontalAlignment="Left" Height="60" Width="160" Click="BtnBanHang_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="DebugStepOut" Width="30" Height="30" HorizontalAlignment="Left"/>
+                        <Label Content="BÁN HÀNG" FontFamily="Segoe UI" FontSize="15" HorizontalAlignment="Center" Foreground="White" Margin="0,0,0,0" FontWeight="Bold" VerticalAlignment="Center"></Label>
+                    </StackPanel>
+                </Button>
+                <!-- Button Thuốc-->
+                <Button IsEnabled="True" x:Name="btnThuoc" ToolTip="THUỐC" Style="{StaticResource MaterialDesignRaisedDarkButton}"  Margin="5,0,0,5" HorizontalAlignment="Left" Height="60" Width="160" Click="BtnThuoc_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="MedicalBag" Width="30" Height="30" HorizontalAlignment="Left"/>
+                        <Label Content="THUỐC" FontFamily="Segoe UI" FontSize="15" HorizontalAlignment="Center" Foreground="White" Margin="0,0,0,0" FontWeight="Bold" VerticalAlignment="Center"></Label>
+                    </StackPanel>
+                </Button>
+                <!-- Button Cửa hàng-->
+                <Button IsEnabled="True" x:Name="btnCuaHang" ToolTip="CỬA HÀNG" Style="{StaticResource MaterialDesignRaisedDarkButton}"  Margin="5,0,0,5" HorizontalAlignment="Left" Height="60" Width="160" Click="BtnCuaHang_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Store" Width="30" Height="30" HorizontalAlignment="Left"/>
+                        <Label Content="CỬA HÀNG" FontFamily="Segoe UI" FontSize="15" HorizontalAlignment="Center" Foreground="White" Margin="0,0,0,0" FontWeight="Bold" VerticalAlignment="Center"></Label>
+                    </StackPanel>
+                </Button>
+                <!--Button Báo cáo-->
+                <Button IsEnabled="True" x:Name="btnBaoCao" ToolTip="BÁO CÁO" Style="{StaticResource MaterialDesignRaisedDarkButton}"  Margin="5,0,0,5" HorizontalAlignment="Left" Height="60" Width="160" Click="BtnBaoCao_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="ChartBarStacked" Width="30" Height="30" HorizontalAlignment="Left"/>
+                        <Label Content="BÁO CÁO" FontFamily="Segoe UI" FontSize="15" HorizontalAlignment="Center" Foreground="White" Margin="0,0,0,0" FontWeight="Bold" VerticalAlignment="Center"></Label>
+                    </StackPanel>
+                </Button>
+                <!--Button Nhân Viên-->
+                <Button IsEnabled="True" x:Name="btnNhanVien" ToolTip="NHÂN VIÊN" Style="{StaticResource MaterialDesignRaisedDarkButton}"  Margin="5,0,0,5" HorizontalAlignment="Left" Height="60" Width="160" Click="BtnNhanVien_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Account" Width="30" Height="30" HorizontalAlignment="Left"/>
+                        <Label Content="NHÂN VIÊN" FontFamily="Segoe UI" FontSize="15" HorizontalAlignment="Center" Foreground="White" Margin="0,0,0,0" FontWeight="Bold" VerticalAlignment="Center"></Label>
+                    </StackPanel>
+                </Button>
+                <!--Button Tài khoản-->
+                <Button IsEnabled="True" x:Name="btnTaiKhoan" ToolTip="TÀI KHOẢN" Style="{StaticResource MaterialDesignRaisedDarkButton}"  Margin="5,0,0,5" HorizontalAlignment="Left" Height="60" Width="160" Click="BtnTaiKhoan_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Account" Width="30" Height="30" HorizontalAlignment="Left"/>
+                        <Label Content="TÀI KHOẢN" FontFamily="Segoe UI" FontSize="15" HorizontalAlignment="Center" Foreground="White" Margin="0,0,0,0" FontWeight="Bold" VerticalAlignment="Center"></Label>
+                    </StackPanel>
+                </Button>
+                <!--Button Đăng xuất-->
+                <Button IsEnabled="True" x:Name="btnThoat" ToolTip="ĐĂNG XUẤT" Style="{StaticResource MaterialDesignRaisedDarkButton}"  Margin="5,0,0,5" HorizontalAlignment="Left" Height="60" Width="160" Click="BtnThoat_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="ExitToApp" Width="30" Height="30" HorizontalAlignment="Left"/>
+                        <Label Content="ĐĂNG XUẤT" FontFamily="Segoe UI" FontSize="15" HorizontalAlignment="Center" Foreground="White" Margin="0,0,0,0" FontWeight="Bold" VerticalAlignment="Center"></Label>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="tabTrangChu" Grid.Column="1" Visibility="Visible" Loaded="loadData">
+            <!--Hiển thị nội dung phần trang chủ-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="52*"/>
+                    <ColumnDefinition Width="293*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Background>
+                    <ImageBrush ImageSource="/images/nen.jpg" Stretch="UniformToFill"/>
+                </Grid.Background>
+                <GroupBox x:Name="tieudetrangchu" Header="Phần mềm quản lý nhà thuốc" Margin="16,16,16,16" Grid.ColumnSpan="2">
+                    <StackPanel>
+                        <Label FontWeight="Bold" Foreground="Blue" FontSize="30" HorizontalAlignment="Center">Trường Đại Học Công Nghệ Thông Tin</Label>
+                        <Label FontWeight="Bold" Foreground="Blue"  FontSize="30" HorizontalAlignment="Center">Mô Học:Phân Tích Thiết Kế Hệ Thống Thông Tin</Label>
+                        <Label Height="50"></Label>
+                        <Label FontWeight="Bold" Foreground="Red" FontSize="20">Báo Cáo Phần Mềm Quản Lý Nhà Thuốc</Label>
+                        <!--<Label FontWeight="Bold" FontSize="18">Sinh viên: Nguyễn Đức Thắng</Label>
+                        <Label FontWeight="Bold" FontSize="18">Lớp: KSTN Toán Tin K61</Label>-->
+                        <Label FontWeight="Bold" FontSize="18">Phần mềm quản lý chuỗi hiệu thuốc</Label>
+
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="tabNhapKho" Grid.Column="1" Visibility="Hidden">
+            <!--Hiển thị nội dung phần nhập kho-->
+            <GroupBox x:Name="GroupBoxNhapKho" Header="Nhập kho" Margin="16">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="350"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+
+                    <Grid Grid.Row="0">
+                        <ListView x:Name="lsvPhieuNhapKho">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Tên Thuốc" Width="250" DisplayMemberBinding="{Binding TenThuoc}"/>
+                                    <GridViewColumn Header="Số lượng nhập" Width="150" DisplayMemberBinding="{Binding SoLuongNhap}"/>
+                                    <GridViewColumn Header="Đơn vị" Width="100" DisplayMemberBinding="{Binding TenDonVi}"/>
+                                    <GridViewColumn Header="Giá nhập" Width="120" DisplayMemberBinding="{Binding GiaNhap}"/>
+                                    <GridViewColumn Header="Hạn sử dụng" Width="150" DisplayMemberBinding="{Binding HanSuDung}"/>
+                                    <GridViewColumn Header="Thành tiền" Width="150" DisplayMemberBinding="{Binding ThanhTien}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+
+
+                    <Grid Grid.Row="1" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Label>Tổng tiền nhập:</Label>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock x:Name="txtTongTienNhap" FontWeight="Bold" Foreground="Red" VerticalAlignment="Center" IsEnabled="False">0</TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Label>vnd</Label>
+                        </Grid>
+                    </Grid>
+
+
+                    <Grid Grid.Row="2" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Label>Ngày làm việc:</Label>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <DatePicker x:Name="dtpNgayLamViecNhapKho" Width="150" HorizontalAlignment="Left" IsEnabled="False"/>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="3" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="450"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Thêm" Click="ThemNhapKho">
+                                        Thêm
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Xóa" Click ="XoaNhapKho">
+                                    Xóa
+                                </Button>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Column="1" HorizontalAlignment="Right">
+                            <Button Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="170" ToolTip="Nhập kho" materialDesign:RippleAssist.Feedback="#DD000000" Click="TaoHoaDonNhap">
+                                Tạo hóa đơn nhập
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+
+        </Grid>
+        <!--Trang  bán hàng-->
+        <Grid x:Name="tabBanHang" Grid.Column="1" Visibility="Hidden">
+            <!--Hiển thị nội dung phần bán hàng-->
+            <GroupBox x:Name="groupDonBanHang" Header="Bán hàng" Margin="16">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="350"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+
+                    <Grid Grid.Row="0">
+                        <ListView x:Name="lsvHoaDonBan">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Tên Thuốc" Width="250" DisplayMemberBinding="{Binding TenThuoc}"/>
+                                    <GridViewColumn Header="Số lượng bán" Width="150" DisplayMemberBinding="{Binding SoLuongBan}" />
+                                    <GridViewColumn Header="Đơn vị" Width="100" DisplayMemberBinding="{Binding TenDonVi}"/>
+                                    <GridViewColumn Header="Giá bán" Width="120" DisplayMemberBinding="{Binding GiaBan}"/>
+                                    <GridViewColumn Header="Hạn sử dụng" Width="150" DisplayMemberBinding="{Binding HanSuDung}"/>
+                                    <GridViewColumn Header="Thành tiền" Width="150" DisplayMemberBinding="{Binding ThanhTien}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+
+
+                    <Grid Grid.Row="1" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Label>Tổng tiền thu:</Label>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <TextBlock x:Name="txtTongTienThu" FontWeight="Bold" Foreground="Red" IsEnabled="False" VerticalAlignment="Center">0</TextBlock>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Label>vnd</Label>
+                                </Grid>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Label HorizontalAlignment="Left">| Cửa hàng:</Label>
+                                </Grid>
+                                <Grid Grid.Column="1" HorizontalAlignment="Left">
+                                    <TextBlock x:Name="txtCuaHangLamViec" HorizontalAlignment="Left" VerticalAlignment="Center" IsEnabled="False">NULL</TextBlock>
+                                </Grid>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+
+
+                    <Grid Grid.Row="2" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Label>Ngày làm việc:</Label>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <DatePicker x:Name="dtpNgayLamViecBanHang" Width="150" HorizontalAlignment="Left" IsEnabled="False"/>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="3" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="450"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Thêm" Click="ThemDonBanHang">
+                                        Thêm
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Xóa" Click ="XoaDonBanHang">
+                                    Xóa
+                                </Button>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Column="1" HorizontalAlignment="Right">
+                            <Button Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="170" ToolTip="Tạo hóa đơn bán" materialDesign:RippleAssist.Feedback="#DD000000" Click="TaoHoaDonBan">
+                                Tạo hóa đơn bán
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+        </Grid>
+
+        <!--Trang quản lý thuốc-->
+
+        <Grid x:Name="tabThuoc" Grid.Column="1" Visibility="Hidden">
+            <TabControl>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Danh sách thuốc"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <!--Danh sách thuốc -->
+                    <GroupBox Header="Danh sách thuốc" Margin="16">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="360"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Label Content="Tìm kiếm Thuốc:" Margin="0,0,18,0"/>
+                                <TextBox x:Name="tbThuoc" Grid.Row="1"/>
+                                <Button Content="Tìm kiếm" Grid.Row="1" Margin="5,0,0,0" HorizontalAlignment="Right" Click="btn_TimThuoc"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <ListView x:Name="lsvThuoc">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding IdThuoc}"/>
+                                            <GridViewColumn Header="Tên thuốc" DisplayMemberBinding="{Binding TenThuoc}" Width="200"/>
+                                            <GridViewColumn Header="Hạn sử dụng" DisplayMemberBinding="{Binding HanSuDung}" Width="150"/>
+                                            <GridViewColumn Header="Kho" DisplayMemberBinding="{Binding SoLuong}" Width="100"/>
+                                            <GridViewColumn Header="Đơn vị" DisplayMemberBinding="{Binding TenDonVi}" Width="100"/>
+                                            <GridViewColumn Header="Giá nhập" DisplayMemberBinding="{Binding GiaNhap}" Width="100"/>
+                                            <GridViewColumn Header="Giá bán" DisplayMemberBinding="{Binding GiaBan}" Width="100"/>
+                                            <GridViewColumn Header="Ghi chú" DisplayMemberBinding="{Binding GhiChu}"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                            <Grid Grid.Row="2" Width="400" HorizontalAlignment="Left">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Thêm" Click="ThemThuoc">
+                                        Thêm
+                                    </Button>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Sửa" Click="SuaThuoc">
+                                        Sửa
+                                    </Button>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Xóa" Click="XoaThuoc">
+                                        Xóa
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Đơn vị"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <GroupBox Header="Danh sách đơn vị tính" Margin="16">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="360"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <ListView x:Name="lsvDonVi">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding IdDonvi}"/>
+                                            <GridViewColumn Header="Tên đơn vị" Width="400" DisplayMemberBinding="{Binding TenDonVi}"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                            <Grid Grid.Row="1" Width="400" HorizontalAlignment="Left">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Thêm" Click="ThemDonVi">
+                                        Thêm
+                                    </Button>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Sửa" Click="SuaDonVi">
+                                        Sửa
+                                    </Button>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Xóa" Click="XoadonVi">
+                                        Xóa
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+        <!--Trang Danh Sách Cửa Hàng-->
+
+        <Grid x:Name="tabCuaHang" Grid.Column="1" Visibility="Hidden">
+            <!--Hiển thị nội dung phần cửa hàng-->
+            <GroupBox Header="Danh sách cửa hàng" Margin="16">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="400"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <ListView x:Name="lsvCuaHang">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding IdCuaHang}" Width="30"/>
+                                    <GridViewColumn Header="Tên cửa hàng" Width="300" DisplayMemberBinding="{Binding TenCuaHang}"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding DiaChi}" Header="Địa chỉ" Width="400"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                    <Grid Grid.Row="1" Width="400" HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Thêm" Click="ThemCuaHang">
+                                Thêm
+                            </Button>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Sửa" Click="SuaCuaHang">
+                                Sửa
+                            </Button>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Xóa" Click="XoaCuaHang">
+                                Xóa
+                            </Button>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+            </GroupBox>
+        </Grid>
+
+        <!--Trang Tạo Báo Cáo-->
+
+        <Grid x:Name="tabBaoCao" Grid.Column="1" Visibility="Hidden">
+            <!-- Hiển thị nội dung phần báo cáo-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <!--Báo cáo nhập kho-->
+                    <Border Background="{DynamicResource MaterialDesignBackground}">
+                        <GroupBox Header="Báo cáo nhập kho" Style="{DynamicResource MaterialDesignGroupBox}" Margin="16" UseLayoutRounding="True" SnapsToDevicePixels="True">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"></RowDefinition>
+                                    <RowDefinition Height="50"></RowDefinition>
+                                    <RowDefinition Height="60"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"></ColumnDefinition>
+                                        <ColumnDefinition Width="180"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0" VerticalAlignment="Center">
+                                        <Label>Ngày bắt đầu:</Label>
+                                    </Grid>
+                                    <Grid Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <DatePicker x:Name="dtpNgayBatDauBaoCaoNhapKho"
+  Width="150"
+  materialDesign:HintAssist.Hint="Ngày bắt đầu"
+  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                    </Grid>
+                                </Grid>
+
+
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"></ColumnDefinition>
+                                        <ColumnDefinition Width="180"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0" VerticalAlignment="Center">
+                                        <Label>Ngày kết thúc:</Label>
+                                    </Grid>
+                                    <Grid Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <DatePicker x:Name="dtpNgayKetThucBaoCaoNhapKho"
+  Width="150"
+  materialDesign:HintAssist.Hint="Ngày kết thúc"
+  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                    </Grid>
+                                </Grid>
+
+
+                                <Grid Grid.Row="2" HorizontalAlignment="Right">
+                                    <Button Click="BaoCaoNhapKho_Click"
+    Style="{StaticResource MaterialDesignRaisedLightButton}"
+    Width="100"
+    ToolTip="Resource name: MaterialDesignRaisedLightButton">
+                                        Lọc
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </GroupBox>
+                    </Border>
+                </Grid>
+                <!--Báo cáo bán hàng-->
+                <Grid Grid.Row="1">
+                    <Border Background="{DynamicResource MaterialDesignBackground}">
+                        <GroupBox Header="Báo cáo bán hàng" Style="{DynamicResource MaterialDesignGroupBox}" Margin="16" UseLayoutRounding="True" SnapsToDevicePixels="True">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"></RowDefinition>
+                                    <RowDefinition Height="50"></RowDefinition>
+                                    <RowDefinition Height="60"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"></ColumnDefinition>
+                                        <ColumnDefinition Width="180"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0" VerticalAlignment="Center">
+                                        <Label>Ngày bắt đầu:</Label>
+                                    </Grid>
+                                    <Grid Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <DatePicker x:Name="dtpNgayBatDauBaoCaoBanHang"
+  Width="150"
+  materialDesign:HintAssist.Hint="Ngày bắt đầu"
+  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                    </Grid>
+                                </Grid>
+
+
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"></ColumnDefinition>
+                                        <ColumnDefinition Width="180"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0" VerticalAlignment="Center">
+                                        <Label>Ngày kết thúc:</Label>
+                                    </Grid>
+                                    <Grid Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <DatePicker x:Name="dtpNgayKetThucBaoCaoBanHang"
+  Width="150"
+  materialDesign:HintAssist.Hint="Ngày kết thúc"
+  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                    </Grid>
+                                </Grid>
+
+
+                                <Grid Grid.Row="2" HorizontalAlignment="Right">
+                                    <Button Click="BaoCaoBanHang_Click"
+    Style="{StaticResource MaterialDesignRaisedLightButton}"
+    Width="100"
+    ToolTip="Resource name: MaterialDesignRaisedLightButton">
+                                        Lọc
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </GroupBox>
+                    </Border>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <!--Hiển thị báo cáo-->
+                <GroupBox x:Name="groupboxBaoCao"  Header="Báo cáo - Tổng: 0 vnđ" Style="{DynamicResource MaterialDesignGroupBox}" Margin="16" materialDesign:ColorZoneAssist.Mode="Accent">
+                    <ListView x:Name="lsvBaoCao">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Tên Thuốc" Width="150" DisplayMemberBinding="{Binding TenThuoc}"/>
+                                <GridViewColumn Header="SL" Width="50" DisplayMemberBinding="{Binding SoLuong}"/>
+                                <GridViewColumn Header="Đơn vị" Width="90" DisplayMemberBinding="{Binding TenDonVi}"/>
+                                <GridViewColumn Header="Giá" Width="120" DisplayMemberBinding="{Binding Gia}"/>
+                                <GridViewColumn Header="Ngày" Width="120" DisplayMemberBinding="{Binding Ngay}"/>
+                                <GridViewColumn Header="Thành tiền" Width="120" DisplayMemberBinding="{Binding ThanhTien}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </GroupBox>
+            </Grid>
+        </Grid>
+
+
+        <!--Trang quản lý nhân viên-->
+        <Grid x:Name="tabNhanVien" Grid.Column="1" Visibility="Hidden">
+            <TabControl>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Danh Sách nhân Viên"/>
+                        </StackPanel>
+
+                    </TabItem.Header>
+                    <!--Danh sách thuốc -->
+                    <GroupBox Header="Danh sách nhân viên" Margin="16">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="360"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Label Content="Tìm kiếm người dùng:" Margin="0,0,18,0"/>
+                                <TextBox x:Name="searchTextBox" Grid.Row="1"/>
+                                <Button Content="Tìm kiếm" Grid.Row="1" Margin="5,0,0,0" HorizontalAlignment="Right" Click="SearchButton_Click"/>
+                            </Grid>
+                           <Grid Grid.Row="1">
+                                <ListView x:Name="lsvNhanVien">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding IdTaiKhoan}"/>
+                                            <GridViewColumn Header="Tên Đăng Nhập" DisplayMemberBinding="{Binding TenDangNhap}" Width="100"/>
+                                            <GridViewColumn Header="Tên Hiển Thị" DisplayMemberBinding="{Binding TenHienThi}" Width="150"/>
+                                            <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding SoDienThoai}" Width="100"/>
+                                            <GridViewColumn Header="CMND" DisplayMemberBinding="{Binding CMND}" Width="100"/>
+                                            <GridViewColumn Header="Địa Chỉ" DisplayMemberBinding="{Binding DiaChi}" Width="200"/>
+                                            <GridViewColumn Header="Chi Nhánh Làm Việc" DisplayMemberBinding="{Binding TenCuaHang}" Width="200"/>
+                                            <GridViewColumn Header="Quyền" DisplayMemberBinding="{Binding VaiTro}" />
+
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                            <Grid Grid.Row="2" Width="400" HorizontalAlignment="Left">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Thêm" Click="ThemNhanVien" >
+                                        Thêm
+                                    </Button>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Sửa" Click="SuaThongTinNhanVien">
+                                        Sửa
+                                    </Button>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Xóa" Click="XoaNhanVien" >
+                                        Xóa
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                </TabItem>
+                <!--<TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Cửa Hàng"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <GroupBox Header="Nhân Viên Thuộc Cửa Hàng" Margin="16">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="360"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <ListView x:Name="lsCuaHang">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding IdDonvi}"/>
+                                            <GridViewColumn Header="Tên Cửa Hàng" Width="400" DisplayMemberBinding="{Binding TenDonVi}"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                            <Grid Grid.Row="1" Width="400" HorizontalAlignment="Left">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Thêm" Click="ThemDonVi">
+                                        Thêm
+                                    </Button>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Sửa" Click="SuaDonVi">
+                                        Sửa
+                                    </Button>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="100" ToolTip="Xóa" Click="XoadonVi">
+                                        Xóa
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                </TabItem>-->
+            </TabControl>
+        </Grid>
+
+        <Grid x:Name="tabTaiKhoan" Grid.Column="1" Visibility="Hidden">
+            <!--Hiển thị nội dung phần tài khoản-->
+            <GroupBox Header="Thông tin tài khoản" Margin="16">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Width="150">Tên đăng nhập:</Label>
+                        <TextBlock x:Name="txtTenDangNhap" FontWeight="Bold" IsEnabled="False"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Width="150">Tên hiển thị:</Label>
+                        <TextBlock x:Name="txtTenHienThi" FontWeight="Bold" IsEnabled="False"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Width="150">Số điện thoại:</Label>
+                        <TextBlock x:Name="txtSoDienThoai" FontWeight="Bold" IsEnabled="False"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Width="150">Chi nhánh làm việc:</Label>
+                        <TextBlock x:Name="txtChiNhanh" FontWeight="Bold" IsEnabled="False">Full</TextBlock>
+                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="120" Click="SuaTaiKhoan">
+                                Sửa
+                            </Button>
+                        </Grid>
+                        <Grid Grid.Column="1" HorizontalAlignment="Left">
+                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="120" Click="DoiMatKhau">
+                                Đổi mật khẩu
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLyCuaHangThuoc_V2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ChiTietDonBanHang">
+    <Key>
+      <PropertyRef Name="IdChiTietDonBanHang" />
+    </Key>
+    <Property Name="IdChiTietDonBanHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdDonBanHang" Type="int" />
+    <Property Name="IdThuoc" Type="int" />
+    <Property Name="SoLuongBan" Type="int" />
+  </EntityType>
+  <EntityType Name="ChiTietPhieuNhapKho">
+    <Key>
+      <PropertyRef Name="IdChitietPhieuNhapKho" />
+    </Key>
+    <Property Name="IdChitietPhieuNhapKho" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPhieuNhapKho" Type="int" />
+    <Property Name="IdThuoc" Type="int" />
+    <Property Name="SoLuongNhap" Type="int" />
+  </EntityType>
+  <EntityType Name="CuaHang">
+    <Key>
+      <PropertyRef Name="IdCuaHang" />
+    </Key>
+    <Property Name="IdCuaHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenCuaHang" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="DiaChi" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="DonBanHang">
+    <Key>
+      <PropertyRef Name="IdDonBanHang" />
+    </Key>
+    <Property Name="IdDonBanHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NgayBan" Type="datetime" Nullable="false" />
+    <Property Name="IdCuaHang" Type="int" />
+  </EntityType>
+  <EntityType Name="DonVi">
+    <Key>
+      <PropertyRef Name="IdDonVi" />
+    </Key>
+    <Property Name="IdDonVi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenDonVi" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhieuNhapKho">
+    <Key>
+      <PropertyRef Name="IdPhieuNhapKho" />
+    </Key>
+    <Property Name="IdPhieuNhapKho" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NgayNhap" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="IdTaiKhoan" />
+    </Key>
+    <Property Name="IdTaiKhoan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenDangNhap" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="TenHienThi" Type="nvarchar" MaxLength="200" />
+    <Property Name="SoDienThoai" Type="nvarchar" MaxLength="100" />
+    <Property Name="IdCuaHang" Type="int" />
+    <Property Name="MatKhau" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Thuoc">
+    <Key>
+      <PropertyRef Name="IdThuoc" />
+    </Key>
+    <Property Name="IdThuoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenThuoc" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="HanSuDung" Type="datetime" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="IdDonVi" Type="int" />
+    <Property Name="GiaNhap" Type="money" />
+    <Property Name="GiaBan" Type="money" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK__ChiTietDo__IdDon__4CA06362">
+    <End Role="DonBanHang" Type="Self.DonBanHang" Multiplicity="0..1" />
+    <End Role="ChiTietDonBanHang" Type="Self.ChiTietDonBanHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonBanHang">
+        <PropertyRef Name="IdDonBanHang" />
+      </Principal>
+      <Dependent Role="ChiTietDonBanHang">
+        <PropertyRef Name="IdDonBanHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietDo__IdThu__4D94879B">
+    <End Role="Thuoc" Type="Self.Thuoc" Multiplicity="0..1" />
+    <End Role="ChiTietDonBanHang" Type="Self.ChiTietDonBanHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Thuoc">
+        <PropertyRef Name="IdThuoc" />
+      </Principal>
+      <Dependent Role="ChiTietDonBanHang">
+        <PropertyRef Name="IdThuoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietPh__IdPhi__45F365D3">
+    <End Role="PhieuNhapKho" Type="Self.PhieuNhapKho" Multiplicity="0..1" />
+    <End Role="ChiTietPhieuNhapKho" Type="Self.ChiTietPhieuNhapKho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuNhapKho">
+        <PropertyRef Name="IdPhieuNhapKho" />
+      </Principal>
+      <Dependent Role="ChiTietPhieuNhapKho">
+        <PropertyRef Name="IdPhieuNhapKho" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietPh__IdThu__46E78A0C">
+    <End Role="Thuoc" Type="Self.Thuoc" Multiplicity="0..1" />
+    <End Role="ChiTietPhieuNhapKho" Type="Self.ChiTietPhieuNhapKho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Thuoc">
+        <PropertyRef Name="IdThuoc" />
+      </Principal>
+      <Dependent Role="ChiTietPhieuNhapKho">
+        <PropertyRef Name="IdThuoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DonBanHan__IdCua__49C3F6B7">
+    <End Role="CuaHang" Type="Self.CuaHang" Multiplicity="0..1" />
+    <End Role="DonBanHang" Type="Self.DonBanHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CuaHang">
+        <PropertyRef Name="IdCuaHang" />
+      </Principal>
+      <Dependent Role="DonBanHang">
+        <PropertyRef Name="IdCuaHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TaiKhoan__IdCuaH__412EB0B6">
+    <End Role="CuaHang" Type="Self.CuaHang" Multiplicity="0..1" />
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CuaHang">
+        <PropertyRef Name="IdCuaHang" />
+      </Principal>
+      <Dependent Role="TaiKhoan">
+        <PropertyRef Name="IdCuaHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Thuoc__IdDonVi__3E52440B">
+    <End Role="DonVi" Type="Self.DonVi" Multiplicity="0..1" />
+    <End Role="Thuoc" Type="Self.Thuoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonVi">
+        <PropertyRef Name="IdDonVi" />
+      </Principal>
+      <Dependent Role="Thuoc">
+        <PropertyRef Name="IdDonVi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QuanLyCuaHangThuoc_V2ModelStoreContainer">
+    <EntitySet Name="ChiTietDonBanHang" EntityType="Self.ChiTietDonBanHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChiTietPhieuNhapKho" EntityType="Self.ChiTietPhieuNhapKho" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CuaHang" EntityType="Self.CuaHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DonBanHang" EntityType="Self.DonBanHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DonVi" EntityType="Self.DonVi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhieuNhapKho" EntityType="Self.PhieuNhapKho" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Thuoc" EntityType="Self.Thuoc" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ChiTietDo__IdDon__4CA06362" Association="Self.FK__ChiTietDo__IdDon__4CA06362">
+      <End Role="DonBanHang" EntitySet="DonBanHang" />
+      <End Role="ChiTietDonBanHang" EntitySet="ChiTietDonBanHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietDo__IdThu__4D94879B" Association="Self.FK__ChiTietDo__IdThu__4D94879B">
+      <End Role="Thuoc" EntitySet="Thuoc" />
+      <End Role="ChiTietDonBanHang" EntitySet="ChiTietDonBanHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietPh__IdPhi__45F365D3" Association="Self.FK__ChiTietPh__IdPhi__45F365D3">
+      <End Role="PhieuNhapKho" EntitySet="PhieuNhapKho" />
+      <End Role="ChiTietPhieuNhapKho" EntitySet="ChiTietPhieuNhapKho" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietPh__IdThu__46E78A0C" Association="Self.FK__ChiTietPh__IdThu__46E78A0C">
+      <End Role="Thuoc" EntitySet="Thuoc" />
+      <End Role="ChiTietPhieuNhapKho" EntitySet="ChiTietPhieuNhapKho" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DonBanHan__IdCua__49C3F6B7" Association="Self.FK__DonBanHan__IdCua__49C3F6B7">
+      <End Role="CuaHang" EntitySet="CuaHang" />
+      <End Role="DonBanHang" EntitySet="DonBanHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TaiKhoan__IdCuaH__412EB0B6" Association="Self.FK__TaiKhoan__IdCuaH__412EB0B6">
+      <End Role="CuaHang" EntitySet="CuaHang" />
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Thuoc__IdDonVi__3E52440B" Association="Self.FK__Thuoc__IdDonVi__3E52440B">
+      <End Role="DonVi" EntitySet="DonVi" />
+      <End Role="Thuoc" EntitySet="Thuoc" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
